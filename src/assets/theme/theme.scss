@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+@use 'theme-light' as lightTheme;
+@use 'theme-dark' as darkTheme;
+@use 'sass:map';
+@use '../../app/pages/main-container/main-container.component' as
+  mainContainerComponent;
+
+@include mat.core();
+mat.$theme-ignore-duplication-warnings: true;
+
+@mixin create-dark-theme() {
+  $theme: map.deep-merge(
+    darkTheme.$dark-theme,
+    (
+      color: (
+        background: (
+          background: #1f1a24,
+        ),
+      ),
+    )
+  );
+  mat-card-content,
+  mat-card-title {
+    color: #f0f0f0;
+  }
+  @include mat.all-component-themes($theme);
+  @include mainContainerComponent.app-main-container-theme($theme);
+  @include mat.strong-focus-indicators();
+  @include mat.strong-focus-indicators-theme(lightTheme.$light-theme);
+}
+
+@mixin create-light-theme() {
+  $theme: map.deep-merge(
+    lightTheme.$light-theme,
+    (
+      color: (
+        background: (
+          background: #f0f0f0,
+        ),
+      ),
+    )
+  );
+  @include mat.all-component-themes($theme);
+  @include mainContainerComponent.app-main-container-theme($theme);
+  @include mat.strong-focus-indicators-theme($theme);
+  @include mat.strong-focus-indicators();
+  @include mat.strong-focus-indicators-theme(darkTheme.$dark-theme);
+}

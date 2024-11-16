@@ -1,0 +1,24 @@
+.header__start {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+}
+
+.header__center {
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: center;
+}
+
+.header__end {
+  align-items: center;
+  display: flex;
+  flex: 0 0 auto;
+}
+
+.header__item {
+  margin-right: 8px;
+  margin-left: 8px;
+}

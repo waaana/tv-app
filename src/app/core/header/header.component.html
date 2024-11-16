@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="header__start">
+      <button
+        mat-fab
+        extended
+        color="primary"
+        [routerLink]="['/tv-shows']"
+        class="header__item">
+        <mat-icon>live_tv</mat-icon>
+        {{ 'application.title' | translate }}
+      </button>
+    </div>
+    <h1 class="header__center mat-display-large header__item">HEADER</h1>
+    <div class="header__end">
+      <mat-slide-toggle
+        (change)="onThemeChanged()"
+        [checked]="isDarkMode"
+        color="primary"
+        class="header__item"
+        >{{ 'theme.change' | translate }}</mat-slide-toggle
+      >
+      <button
+        mat-fab
+        [matMenuTriggerFor]="lang"
+        color="primary"
+        class="header__item">
+        <div>{{ selectedLang() }}</div>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu #lang="matMenu">
+  @for (option of langOptions(); track option.language) {
+    <button mat-menu-item (click)="selectLanguage(option.language)">
+      <span>{{ option.language }}</span>
+    </button>
+  }
+</mat-menu>

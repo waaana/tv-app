@@ -1,4 +1,14 @@
 {
   "application.title": "Movie & TV App",
+  "application.cancel": "Cancel",
+  "application.firstAirDate": "First Air Date",
+  "application.originalLanguage": "Original language",
+  "application.overview": "Overview",
+  "application.numberOfEpisodes": "Number Of Episodes",
+  "application.numberOfSeasons": "Number Of Seasons",
+  "application.popularity": "Popilarity",
+  "application.status": "Status",
+  "navItem.label.tvShows": "TV Shows",
+  "navItem.label.movies": "Movies",
   "theme.change": "Change theme"
 }

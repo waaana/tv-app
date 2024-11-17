@@ -5,3 +5,11 @@
     background-color: mat.get-theme-color($theme, background, background);
   }
 }
+
+mat-nav-list {
+  width: 200px;
+}
+
+.active .mdc-list-item__content span {
+  font-weight: bold;
+}

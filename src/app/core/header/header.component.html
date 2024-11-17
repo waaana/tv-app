@@ -11,24 +11,40 @@
         {{ 'application.title' | translate }}
       </button>
     </div>
-    <h1 class="header__center mat-display-large header__item">HEADER</h1>
+    @if (!isSmallWidth()) {
+      <ng-template [ngTemplateOutlet]="pageHeader"></ng-template>
+    } @else {
+      <div class="header__center mat-display-large header__item"></div>
+    }
+
     <div class="header__end">
-      <mat-slide-toggle
-        (change)="onThemeChanged()"
-        [checked]="isDarkMode"
-        color="primary"
-        class="header__item"
-        >{{ 'theme.change' | translate }}</mat-slide-toggle
-      >
-      <button
-        mat-fab
-        [matMenuTriggerFor]="lang"
-        color="primary"
-        class="header__item">
-        <div>{{ selectedLang() }}</div>
-      </button>
+      @if (!isMediumWidth()) {
+        <mat-slide-toggle
+          (change)="onThemeChanged()"
+          [checked]="isDarkMode"
+          color="primary"
+          class="header__item"
+          >{{ 'theme.change' | translate }}</mat-slide-toggle
+        >
+        <button
+          mat-fab
+          [matMenuTriggerFor]="lang"
+          color="primary"
+          class="header__item">
+          <div>{{ selectedLang() }}</div>
+        </button>
+      } @else {
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+        </button>
+      }
     </div>
   </mat-toolbar-row>
+  @if (isSmallWidth()) {
+    <mat-toolbar-row>
+      <ng-template [ngTemplateOutlet]="pageHeader"></ng-template>
+    </mat-toolbar-row>
+  }
 </mat-toolbar>
 
 <mat-menu #lang="matMenu">
@@ -38,3 +54,31 @@
     </button>
   }
 </mat-menu>
+
+<mat-menu #menu="matMenu">
+  @for (item of navItems(); track item.headerKey) {
+    <button mat-menu-item [routerLink]="[item.route]" routerLinkActive="active">
+      {{ item.headerKey | translate }}
+    </button>
+  }
+  <mat-divider></mat-divider>
+
+  <div mat-menu-item>
+    <mat-slide-toggle
+      (change)="onThemeChanged()"
+      [checked]="isDarkMode"
+      color="primary"
+      class="header__item"
+      >{{ 'theme.change' | translate }}</mat-slide-toggle
+    >
+  </div>
+  <div>
+    <button mat-menu-item [matMenuTriggerFor]="lang" class="header__item">
+      <div>{{ selectedLang() }}</div>
+    </button>
+  </div>
+</mat-menu>
+
+<ng-template #pageHeader>
+  <h1 class="header__center mat-display-large header__item">HEADER</h1>
+</ng-template>

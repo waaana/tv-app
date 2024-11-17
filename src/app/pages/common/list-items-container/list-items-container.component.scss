@@ -1,0 +1,28 @@
+.list-items {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  &__item {
+    width: 99vw;
+    height: 50vh;
+  }
+
+  @media screen and (min-width: 600px) {
+    &__item {
+      width: 35vw;
+      height: 45vh;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    &__item {
+      width: 25vw;
+      height: 45vh;
+    }
+  }
+}

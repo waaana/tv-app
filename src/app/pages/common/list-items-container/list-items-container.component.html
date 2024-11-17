@@ -1,0 +1,8 @@
+<div class="list-items__container">
+  @for (item of items(); track item.id) {
+    <app-list-item-container
+      class="list-items__item"
+      (click)="itemSelected(item)"
+      [item]="item"></app-list-item-container>
+  }
+</div>

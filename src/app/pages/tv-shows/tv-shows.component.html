@@ -1,1 +1,4 @@
-<p>tv-shows works!</p>
+<app-list-items-container
+  [items]="tvShowList()"
+  (itemClicked)="itemClicked($event)">
+</app-list-items-container>

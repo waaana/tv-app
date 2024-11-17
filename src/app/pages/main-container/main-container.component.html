@@ -1,4 +1,21 @@
 <div>
-  <app-header (changeTheme)="changeTheme($event)"></app-header>
-  <router-outlet></router-outlet>
+  <app-header
+    (changeTheme)="changeTheme($event)"
+    [navItems]="navItems()"
+    [pageWidth]="pageWidth()"></app-header>
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="!isMediumWidth()">
+      <mat-nav-list>
+        @for (item of navItems(); track item.headerKey) {
+          <a
+            mat-list-item
+            [routerLink]="[item.route]"
+            routerLinkActive="active">
+            {{ item.headerKey | translate }}
+          </a>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

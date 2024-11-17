@@ -1,0 +1,39 @@
+<h1 mat-dialog-title>{{ data.name }}</h1>
+<mat-dialog-content class="mat-typography">
+  <img mat-card-image src="{{ data.backdrop_path }}" alt="{{ data.name }}" />
+  <table>
+    <tr>
+      <th scope="row">{{ 'application.overview' | translate }}</th>
+      <td>{{ data.overview }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.popularity' | translate }}</th>
+      <td>{{ data.popularity }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.status' | translate }}</th>
+      <td>{{ data.status }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.numberOfSeasons' | translate }}</th>
+      <td>{{ data.number_of_seasons }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.numberOfEpisodes' | translate }}</th>
+      <td>{{ data.number_of_episodes }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.firstAirDate' | translate }}</th>
+      <td>{{ data.first_air_date }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.originalLanguage' | translate }}</th>
+      <td>{{ data.original_language }}</td>
+    </tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    {{ 'application.cancel' | translate }}
+  </button>
+</mat-dialog-actions>

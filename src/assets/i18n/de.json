@@ -1,4 +1,14 @@
 {
   "application.title": "Film- und Fernseh-App",
+  "application.cancel": "Stornieren",
+  "application.firstAirDate": "Erstausstrahlungsdatum",
+  "application.originalLanguage": "Originalsprache",
+  "application.overview": "Überblick",
+  "application.numberOfEpisodes": "Anzahl der Episoden",
+  "application.numberOfSeasons": "Anzahl der TV-Staffeln",
+  "application.popularity": "Popularität",
+  "application.status": "Status",
+  "navItem.label.tvShows": "Fernsehsendungen",
+  "navItem.label.movies": "Filme",
   "theme.change": "Aussehen ändern"
 }

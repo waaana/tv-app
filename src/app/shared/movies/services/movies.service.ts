@@ -1,23 +1,23 @@
 import { inject, Injectable } from '@angular/core';
-import { TvShowData, TvShowsResponse } from '../model/tv-shows.model';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { MovieData, MoviesResponse } from '../model/movies.model';
 import { CommonResponseDetails } from '../../model/shared.model';
 import { SharedUtil } from '../../utils/shared.util';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TvShowsService {
+export class MoviesService {
   #http = inject(HttpClient);
 
-  public getTvShows$(
+  public getMovies$(
     language: string,
     page: number,
     uid: number
   ): Observable<CommonResponseDetails> {
     return this.#http
-      .get<TvShowsResponse>('https://api.themoviedb.org/3/tv/top_rated', {
+      .get<MoviesResponse>('https://api.themoviedb.org/3/movie/top_rated', {
         params: {
           language,
           page,
@@ -26,7 +26,7 @@ export class TvShowsService {
       .pipe(
         map(response => {
           return {
-            response: SharedUtil.mapTvShowsResponseToCommonResponse(response),
+            response: SharedUtil.mapMoviesResponseToCommonResponse(response),
             details: {
               page,
               searchQuery: '',
@@ -37,14 +37,14 @@ export class TvShowsService {
       );
   }
 
-  public searchTvShows$(
+  public searchMovies$(
     language: string,
     page: number,
     query: string,
     uid: number
   ): Observable<CommonResponseDetails> {
     return this.#http
-      .get<TvShowsResponse>(`https://api.themoviedb.org/3/search/tv`, {
+      .get<MoviesResponse>(`https://api.themoviedb.org/3/search/movie`, {
         params: {
           query,
           include_adult: false,
@@ -55,7 +55,7 @@ export class TvShowsService {
       .pipe(
         map(response => {
           return {
-            response: SharedUtil.mapTvShowsResponseToCommonResponse(response),
+            response: SharedUtil.mapMoviesResponseToCommonResponse(response),
             details: {
               page,
               searchQuery: query,
@@ -66,11 +66,14 @@ export class TvShowsService {
       );
   }
 
-  public getTvShow$(language: string, id: string): Observable<TvShowData> {
-    return this.#http.get<TvShowData>(`https://api.themoviedb.org/3/tv/${id}`, {
-      params: {
-        language,
-      },
-    });
+  public getMovie$(language: string, id: string): Observable<MovieData> {
+    return this.#http.get<MovieData>(
+      `https://api.themoviedb.org/3/movie/${id}`,
+      {
+        params: {
+          language,
+        },
+      }
+    );
   }
 }

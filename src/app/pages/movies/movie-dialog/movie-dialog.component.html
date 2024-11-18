@@ -1,1 +1,39 @@
-<p>movie-dialog works!</p>
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<mat-dialog-content class="mat-typography">
+  <img mat-card-image src="{{ data.backdrop_path }}" alt="{{ data.title }}" />
+  <table>
+    <tr>
+      <th scope="row">{{ 'application.overview' | translate }}</th>
+      <td>{{ data.overview }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.popularity' | translate }}</th>
+      <td>{{ data.popularity }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.releaseDate' | translate }}</th>
+      <td>{{ data.release_date }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.budget' | translate }}</th>
+      <td>{{ data.budget }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.revenue' | translate }}</th>
+      <td>{{ data.revenue }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.imdbId' | translate }}</th>
+      <td>{{ data.imdb_id }}</td>
+    </tr>
+    <tr>
+      <th scope="row">{{ 'application.originalLanguage' | translate }}</th>
+      <td>{{ data.original_language }}</td>
+    </tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>
+    {{ 'application.cancel' | translate }}
+  </button>
+</mat-dialog-actions>

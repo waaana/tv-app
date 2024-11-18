@@ -3,9 +3,9 @@ import {
   GeneralPageInfo,
   QueryDetails,
 } from '../../model/shared.model';
-import { TvShowData } from './tv-shows.model';
+import { MovieData } from './movies.model';
 
-export interface TvShowsListStatus {
+export interface MoviesListStatus {
   pageInfo: GeneralPageInfo;
   data: CommonEntertainmentData[];
   currentQueryDetails: QueryDetails | null;
@@ -15,9 +15,9 @@ export interface TvShowsListStatus {
   error: Error | null;
 }
 
-export interface TvShowStatus {
+export interface MovieStatus {
   id: string;
-  data: TvShowData | null;
+  data: MovieData | null;
   isRetrieving: boolean;
   error: Error | null;
 }

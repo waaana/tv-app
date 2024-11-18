@@ -24,6 +24,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { tmdbInterceptor } from './core/interceptors/tmdb/tmdb.interceptor';
 import { settingsFeatureKey, settingsReducer } from './shared/settings';
 import { SettingsEffects } from './shared/settings/store/settings.effects';
+import { moviesFeatureKey, moviesReducer } from './shared/movies';
+import { MoviesEffects } from './shared/movies/store/movies.effects';
 
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (
   http: HttpClient
@@ -34,9 +36,10 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideStore({
       [tvShowsFeatureKey]: tvShowsReducer,
+      [moviesFeatureKey]: moviesReducer,
       [settingsFeatureKey]: settingsReducer,
     }),
-    provideEffects([TvShowsEffects, SettingsEffects]),
+    provideEffects([TvShowsEffects, MoviesEffects, SettingsEffects]),
     provideStoreDevtools(),
     provideAnimations(),
     provideRouter(routes),

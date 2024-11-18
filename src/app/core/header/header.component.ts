@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
-import { AppTheme, LangDrowpdownOptions, LangOption } from '../../shared/types';
+import { AppTheme, LangOption } from '../../shared/types';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { SharedUtil } from '../../shared/utils/shared.util';
 import { NavItem } from '../../shared/settings/model/settings.model';
 import { MatDivider } from '@angular/material/divider';
+import { LangDrowpdownOptions } from '../../shared/model/shared.model';
 
 @Component({
   selector: 'app-header',
@@ -64,7 +65,6 @@ export class HeaderComponent implements OnInit {
 
   onThemeChanged() {
     this.isDarkMode = !this.isDarkMode;
-    console.log(this.isDarkMode);
     if (this.isDarkMode) {
       this.changeTheme.emit('dark-theme');
     } else {

@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { TvShowsGeneral } from '../../../shared/tv-shows';
+import { CommonEntertainmentData } from '../../../shared/model/shared.model';
 
 @Component({
   selector: 'app-list-item-container',
@@ -10,5 +10,5 @@ import { TvShowsGeneral } from '../../../shared/tv-shows';
   styleUrl: './list-item-container.component.scss',
 })
 export class ListItemContainerComponent {
-  item = input.required<TvShowsGeneral>();
+  item = input.required<CommonEntertainmentData>();
 }

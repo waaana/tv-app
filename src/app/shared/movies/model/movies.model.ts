@@ -1,28 +1,28 @@
-export interface TvShowsGeneral {
+export interface MoviesGeneral {
   id: string;
-  name: string;
+  title: string;
   backdrop_path: string;
   overview: string;
   popularity: number;
-  first_air_date: string;
+  release_date: string;
   original_language: string;
 }
-export interface TvShowData {
+export interface MovieData {
   id: string;
-  name: string;
+  title: string;
   backdrop_path: string;
   overview: string;
   popularity: number;
-  first_air_date: string;
+  release_date: string;
   original_language: string;
-  number_of_seasons: number;
-  number_of_episodes: number;
-  status: number;
+  budget: number;
+  revenue: number;
+  imdb_id: string;
 }
 
-export interface TvShowsResponse {
+export interface MoviesResponse {
   page: number;
-  results: TvShowsGeneral[];
+  results: MoviesGeneral[];
   total_pages: number;
   total_results: number;
 }

@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { TranslateModule } from '@ngx-translate/core';
 import { debounceTime, filter, tap } from 'rxjs';
-import { QueryDetails } from '../../../shared/tv-shows';
+import { QueryDetails } from '../../../shared/model/shared.model';
 
 @Component({
   selector: 'app-search-items',

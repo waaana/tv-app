@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, filter, map } from 'rxjs';
+import { catchError, exhaustMap, map } from 'rxjs';
 import { TvShowsActions, tvShowsSelectors } from '..';
 import { TvShowsService } from '../services/tv-shows.service';
 import { concatLatestFrom } from '@ngrx/operators';

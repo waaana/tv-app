@@ -7,6 +7,8 @@ import { concatLatestFrom } from '@ngrx/operators';
 import { settingsSelectors } from './settings.selector';
 import { TvShowDialogComponent } from '../../../pages/tv-shows/tv-show-dialog/tv-show-dialog.component';
 import { tap } from 'rxjs';
+import { MoviesActions, moviesSelectors } from '../../movies';
+import { MovieDialogComponent } from '../../../pages/movies/movie-dialog/movie-dialog.component';
 
 @Injectable()
 export class SettingsEffects {
@@ -24,6 +26,24 @@ export class SettingsEffects {
         tap(([_, appTheme, tvShowData]) => {
           this.#dialog.open(TvShowDialogComponent, {
             data: tvShowData,
+            panelClass: appTheme,
+          });
+        })
+      ),
+    { dispatch: false }
+  );
+
+  openMovie$ = createEffect(
+    () =>
+      this.#actions.pipe(
+        ofType(MoviesActions.getMovieSuccessResponse),
+        concatLatestFrom(() => [
+          this.#store.select(settingsSelectors.getAppTheme),
+          this.#store.select(moviesSelectors.getDialogMovie),
+        ]),
+        tap(([_, appTheme, movieData]) => {
+          this.#dialog.open(MovieDialogComponent, {
+            data: movieData,
             panelClass: appTheme,
           });
         })

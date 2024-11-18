@@ -1,19 +1,19 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { tvShowsFeatureKey, TvShowsState } from './tv-shows.reducer';
-import { TvShowData } from '../model/tv-shows.model';
+import { moviesFeatureKey, MoviesState } from './movies.reducer';
 import { SharedUtil } from '../../utils/shared.util';
+import { MovieData } from '../model/movies.model';
 import {
   CommonEntertainmentData,
   GeneralPageInfo,
   QueryDetails,
 } from '../../model/shared.model';
 
-export const selectTvShowsFeature =
-  createFeatureSelector<TvShowsState>(tvShowsFeatureKey);
+export const selectMoviesFeature =
+  createFeatureSelector<MoviesState>(moviesFeatureKey);
 
-const getTvShowsList = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): CommonEntertainmentData[] => {
+const getMoviesList = createSelector(
+  selectMoviesFeature,
+  (state: MoviesState): CommonEntertainmentData[] => {
     let items = [];
     if (
       state.list.isInitialQuery &&
@@ -30,52 +30,52 @@ const getTvShowsList = createSelector(
 );
 
 const getPageInfo = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): GeneralPageInfo => {
+  selectMoviesFeature,
+  (state: MoviesState): GeneralPageInfo => {
     return state.list.pageInfo;
   }
 );
 
 const getLastQueryDetails = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): QueryDetails | null => {
+  selectMoviesFeature,
+  (state: MoviesState): QueryDetails | null => {
     return state.list.lastQueryDetails;
   }
 );
 
 const getCurrentQueryDetails = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): QueryDetails | null => {
+  selectMoviesFeature,
+  (state: MoviesState): QueryDetails | null => {
     return state.list.currentQueryDetails;
   }
 );
 
-const getDialogTvShow = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): TvShowData | null => {
-    if (!state.tvShow.data) {
+const getDialogMovie = createSelector(
+  selectMoviesFeature,
+  (state: MoviesState): MovieData | null => {
+    if (!state.movie.data) {
       return null;
     }
-    return SharedUtil.mapCorrectIconPath<TvShowData>(state.tvShow.data);
+    return SharedUtil.mapCorrectIconPath<MovieData>(state.movie.data);
   }
 );
 
 const isRetrievingList = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): boolean => {
+  selectMoviesFeature,
+  (state: MoviesState): boolean => {
     return state.list.isRetrieving;
   }
 );
 
 const isRetrieving = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): boolean => {
-    return state.list.isRetrieving || state.tvShow.isRetrieving;
+  selectMoviesFeature,
+  (state: MoviesState): boolean => {
+    return state.list.isRetrieving || state.movie.isRetrieving;
   }
 );
 const isLastItem = createSelector(
-  selectTvShowsFeature,
-  (state: TvShowsState): boolean => {
+  selectMoviesFeature,
+  (state: MoviesState): boolean => {
     return (
       state.list.pageInfo.lastFetchedPage === 0 ||
       state.list.pageInfo.lastFetchedPage >= state.list.pageInfo.totalPages
@@ -83,10 +83,10 @@ const isLastItem = createSelector(
   }
 );
 
-export const tvShowsSelectors = {
+export const moviesSelectors = {
   getPageInfo,
-  getTvShowsList,
-  getDialogTvShow,
+  getMoviesList,
+  getDialogMovie,
   getCurrentQueryDetails,
   getLastQueryDetails,
   isRetrieving,

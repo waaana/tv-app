@@ -1,0 +1,36 @@
+.spinner__layout {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+mat-sidenav-content {
+  margin-left: 0 !important;
+}
+
+.search__center {
+  display: block;
+  margin: auto;
+}
+
+.movie__container {
+  height: calc(100vh - 64px) !important;
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .movie__container {
+    height: calc(100vh - 130px) !important;
+  }
+}
+
+.movie__content {
+  height: 100%;
+  display: block;
+}
+
+.search__center {
+  text-align: center;
+}

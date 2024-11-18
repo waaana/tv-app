@@ -1,1 +1,25 @@
-<p>movies works!</p>
+<mat-sidenav-content (scroll)="onScroll($event)"
+  ><div class="movie__container">
+    <div class="movie__content">
+      <app-search-items
+        class="search__center"
+        [initialSearch]="lastQueryDetails()"
+        (initiateSearch)="initiateSearch($event)"
+        (searchChange)="searchChange($event)"></app-search-items>
+      @if (isRetrievingList() && !isNotEnoughOfCharacters()) {
+        <mat-spinner class="spinner__layout"></mat-spinner>
+      }
+      @if (isNotEnoughOfCharacters()) {
+        <div>
+          {{ 'application.needThreeCharacters' | translate }}
+        </div>
+      }
+      <app-list-items-container
+        [isLastItem]="isLastItem()"
+        [isRetrievingList]="isRetrievingList()"
+        [items]="movieList()"
+        (itemClicked)="itemClicked($event)">
+      </app-list-items-container>
+    </div>
+  </div>
+</mat-sidenav-content>

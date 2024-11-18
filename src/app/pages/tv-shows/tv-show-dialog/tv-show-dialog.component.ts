@@ -22,7 +22,5 @@ export class TvShowDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: TvShowData
-  ) {
-    console.log({ data });
-  }
+  ) {}
 }

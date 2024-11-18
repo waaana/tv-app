@@ -1,5 +1,6 @@
 import { createAction } from '@ngrx/store';
-import { TvShowData, TvShowsResponse } from '../model/tv-shows.model';
+import { TvShowData } from '../model/tv-shows.model';
+import { CommonResponse } from '../../model/shared.model';
 
 export const resetTvShowsOnQueryChange = createAction(
   '[TvShows] Reset Tv Shows On Query Change'
@@ -16,7 +17,7 @@ export const getTvShows = createAction(
 );
 export const getTvShowsSuccessResponse = createAction(
   '[TvShows] Get Tv Shows Success Response',
-  (tvShowsResponse: TvShowsResponse) => ({ tvShowsResponse })
+  (tvShowsResponse: CommonResponse) => ({ tvShowsResponse })
 );
 export const getTvShowsFailedResponse = createAction(
   '[TvShows] Get Tv Shows Failed Response',

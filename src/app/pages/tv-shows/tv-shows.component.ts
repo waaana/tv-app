@@ -7,12 +7,7 @@ import {
   computed,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import {
-  QueryDetails,
-  TvShowsActions,
-  TvShowsGeneral,
-  tvShowsSelectors,
-} from '../../shared/tv-shows';
+import { TvShowsActions, tvShowsSelectors } from '../../shared/tv-shows';
 import { Store } from '@ngrx/store';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ListItemsContainerComponent } from '../common/list-items-container/list-items-container.component';
@@ -21,13 +16,16 @@ import { SearchItemsComponent } from '../common/search-items/search-items.compon
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SettingsActions } from '../../shared/settings';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {
+  CommonEntertainmentData,
+  QueryDetails,
+} from '../../shared/model/shared.model';
 
 @Component({
   selector: 'app-tv-shows',
   standalone: true,
   imports: [
     TranslateModule,
-    ListItemsContainerComponent,
     ListItemsContainerComponent,
     SearchItemsComponent,
     MatProgressSpinnerModule,
@@ -66,7 +64,7 @@ export class TvShowsComponent implements OnInit, OnDestroy {
     );
   }
 
-  itemClicked(item: TvShowsGeneral) {
+  itemClicked(item: CommonEntertainmentData) {
     this.#store.dispatch(
       TvShowsActions.getTvShow(this.#translateService.currentLang, item.id)
     );

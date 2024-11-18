@@ -1,8 +1,15 @@
-<div class="list-items__container">
-  @for (item of items(); track item.id) {
-    <app-list-item-container
-      class="list-items__item"
-      (click)="itemSelected(item)"
-      [item]="item"></app-list-item-container>
+@if (itemsPresent()) {
+  <div class="list-items__container">
+    @for (item of items(); track item.id) {
+      <app-list-item-container
+        class="list-items__item"
+        (click)="itemSelected(item)"
+        [item]="item"></app-list-item-container>
+    }
+  </div>
+  @if (isLastItem()) {
+    <div class="text__center">{{ 'application.noMoreItems' | translate }}</div>
   }
-</div>
+} @else if (!isRetrievingList()) {
+  <div class="text__center">{{ 'application.emptyData' | translate }}</div>
+}

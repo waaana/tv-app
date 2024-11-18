@@ -1,0 +1,11 @@
+<form [formGroup]="searchForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>{{ 'application.search' | translate }}</mat-label>
+    <input
+      type="string"
+      [formControl]="searchFC"
+      matInput
+      placeholder="{{ 'application.insertName' | translate }}" />
+    <mat-icon matPrefix>search</mat-icon>
+  </mat-form-field>
+</form>

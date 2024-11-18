@@ -1,4 +1,25 @@
-<app-list-items-container
-  [items]="tvShowList()"
-  (itemClicked)="itemClicked($event)">
-</app-list-items-container>
+<mat-sidenav-content (scroll)="onScroll($event)"
+  ><div class="tv-show__container">
+    <div class="tv-show__content">
+      <app-search-items
+        class="search__center"
+        [initialSearch]="lastQueryDetails()"
+        (initiateSearch)="initiateSearch($event)"
+        (searchChange)="searchChange($event)"></app-search-items>
+      @if (isRetrievingList() && !isNotEnoughOfCharacters()) {
+        <mat-spinner class="spinner__layout"></mat-spinner>
+      }
+      @if (isNotEnoughOfCharacters()) {
+        <div>
+          {{ 'application.needThreeCharacters' | translate }}
+        </div>
+      }
+      <app-list-items-container
+        [isLastItem]="isLastItem()"
+        [isRetrievingList]="isRetrievingList()"
+        [items]="tvShowList()"
+        (itemClicked)="itemClicked($event)">
+      </app-list-items-container>
+    </div>
+  </div>
+</mat-sidenav-content>

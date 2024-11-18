@@ -16,7 +16,13 @@ const getAppTheme = createSelector(
   (state: SettingsState): AppTheme => state.appTheme
 );
 
+const getTabHeaderKey = createSelector(
+  selectSettingsFeature,
+  (state: SettingsState): string => state.tabHeaderKey
+);
+
 export const settingsSelectors = {
   getNavItems,
   getAppTheme,
+  getTabHeaderKey,
 };

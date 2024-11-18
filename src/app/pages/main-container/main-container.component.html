@@ -1,7 +1,8 @@
-<div>
+<div class="main-page__container">
   <app-header
     (changeTheme)="changeTheme($event)"
     [navItems]="navItems()"
+    [headerKey]="headerKey()"
     [pageWidth]="pageWidth()"></app-header>
   <mat-sidenav-container>
     <mat-sidenav mode="side" [opened]="!isMediumWidth()">
@@ -16,6 +17,6 @@
         }
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+    <router-outlet></router-outlet>
   </mat-sidenav-container>
 </div>

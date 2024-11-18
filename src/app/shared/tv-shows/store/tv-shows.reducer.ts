@@ -20,6 +20,9 @@ const initialState: TvShowsState = {
       lastFetchedPage: 0,
       totalPages: 0,
     },
+    isInitialQuery: true,
+    currentQueryDetails: null,
+    lastQueryDetails: null,
     data: [],
     isRetrieving: false,
     error: null,
@@ -34,7 +37,7 @@ const initialState: TvShowsState = {
 
 export const tvShowsReducer = createReducer(
   initialState,
-  on(TvShowsActions.resetTvShows, state => ({
+  on(TvShowsActions.resetTvShowsOnQueryChange, state => ({
     ...state,
     list: {
       ...state.list,
@@ -44,13 +47,19 @@ export const tvShowsReducer = createReducer(
         lastFetchedPage: 0,
         totalPages: 0,
       },
+      isRetrieving: true,
       error: null,
     },
   })),
-  on(TvShowsActions.getTvShows, state => ({
+  on(TvShowsActions.getTvShows, (state, { uid, query, isInitialQuery }) => ({
     ...state,
     list: {
       ...state.list,
+      currentQueryDetails: {
+        searchQuery: query,
+        uid,
+      },
+      isInitialQuery,
       isRetrieving: true,
       error: null,
     },
@@ -66,6 +75,10 @@ export const tvShowsReducer = createReducer(
           totalPages: tvShowsResponse.total_pages,
           lastFetchedPage: tvShowsResponse.page,
         },
+        lastQueryDetails: state.list.currentQueryDetails
+          ? { ...state.list.currentQueryDetails }
+          : null,
+        currentQueryDetails: null,
         data: [...state.list.data, ...tvShowsResponse.results],
         isRetrieving: false,
         error: null,
@@ -76,6 +89,7 @@ export const tvShowsReducer = createReducer(
     ...state,
     list: {
       ...state.list,
+      currentQueryDetails: null,
       data: [],
       isRetrieving: false,
       error,

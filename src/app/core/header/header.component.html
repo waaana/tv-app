@@ -80,5 +80,7 @@
 </mat-menu>
 
 <ng-template #pageHeader>
-  <h1 class="header__center mat-display-large header__item">HEADER</h1>
+  <h1 class="header__center mat-display-large header__item">
+    {{ headerKey() ?? '' | translate }}
+  </h1>
 </ng-template>

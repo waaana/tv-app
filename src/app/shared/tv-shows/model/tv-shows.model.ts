@@ -20,11 +20,25 @@ export interface TvShowData {
   status: number;
 }
 
+export interface QueryDetails {
+  searchQuery: string;
+  uid: number;
+}
+
 export interface TvShowsResponse {
   page: number;
   results: TvShowsGeneral[];
   total_pages: number;
   total_results: number;
+}
+
+export interface TvShowsResponseDetails {
+  response: TvShowsResponse;
+  details: {
+    page: number;
+    searchQuery: string;
+    uid: number;
+  };
 }
 
 export interface TvShowsPageInfo {

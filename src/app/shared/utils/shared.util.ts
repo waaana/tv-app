@@ -2,11 +2,12 @@ import { environment } from '../../../environments/environment';
 
 export class SharedUtil {
   static mapCorrectIconPath<T extends { backdrop_path: string }>(item: T): T {
-    console.log({ environment });
-    console.log({ item });
+    const backdropPath = item.backdrop_path
+      ? `${environment.imgPath}${item.backdrop_path}`
+      : '/assets/image/no-image.png';
     return {
       ...item,
-      backdrop_path: `${environment.imgPath}${item.backdrop_path}`,
+      backdrop_path: backdropPath,
     };
   }
 

@@ -2,6 +2,11 @@
 
 @use './assets/theme/theme' as theme;
 
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .dark-theme {
   @include theme.create-dark-theme();
 }

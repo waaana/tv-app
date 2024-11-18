@@ -1,10 +1,18 @@
 import { createAction } from '@ngrx/store';
 import { TvShowData, TvShowsResponse } from '../model/tv-shows.model';
 
-export const resetTvShows = createAction('[TvShows] Reset Tv Shows');
+export const resetTvShowsOnQueryChange = createAction(
+  '[TvShows] Reset Tv Shows On Query Change'
+);
+
 export const getTvShows = createAction(
   '[TvShows] Get Tv Shows',
-  (language: string, size: number) => ({ language, size })
+  (language: string, uid: number, query: string, isInitialQuery = false) => ({
+    language,
+    uid,
+    query,
+    isInitialQuery,
+  })
 );
 export const getTvShowsSuccessResponse = createAction(
   '[TvShows] Get Tv Shows Success Response',
@@ -13,6 +21,9 @@ export const getTvShowsSuccessResponse = createAction(
 export const getTvShowsFailedResponse = createAction(
   '[TvShows] Get Tv Shows Failed Response',
   (error: Error) => ({ error })
+);
+export const skipTvShowsUpdate = createAction(
+  '[TvShows] Skip Tv Shows Success Response'
 );
 
 export const getTvShow = createAction(

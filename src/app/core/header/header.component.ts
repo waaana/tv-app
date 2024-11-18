@@ -42,6 +42,7 @@ import { MatDivider } from '@angular/material/divider';
 export class HeaderComponent implements OnInit {
   changeTheme = output<AppTheme>();
   pageWidth = input<number>(0);
+  headerKey = input<string>();
   navItems = input<NavItem[] | undefined>([]);
   isSmallWidth = computed(() => SharedUtil.isSmallPageWidth(this.pageWidth()));
   isMediumWidth = computed(() =>

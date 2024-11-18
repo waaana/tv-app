@@ -49,6 +49,9 @@ export class MainContainerComponent implements OnDestroy {
   navItems = toSignal(
     this.#store.select<NavItem[]>(settingsSelectors.getNavItems)
   );
+  headerKey = toSignal(
+    this.#store.select<string>(settingsSelectors.getTabHeaderKey)
+  );
 
   private unsubscribe$ = new Subject<void>();
   pageWidth = signal<number>(0);

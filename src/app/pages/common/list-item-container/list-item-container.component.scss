@@ -9,3 +9,10 @@ mat-card-content {
 img {
   object-fit: 'contain';
 }
+
+mat-card {
+  border: 1px solid transparent;
+  &:hover {
+    border: 1px solid;
+  }
+}

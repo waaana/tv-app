@@ -10,13 +10,19 @@ import { animate, style, transition, trigger } from '@angular/animations';
   templateUrl: './list-item-container.component.html',
   styleUrl: './list-item-container.component.scss',
   animations: [
-    trigger('shake', [
+    trigger('appear', [
       transition(':enter', [
-        style({ transform: 'rotate(0)' }),
-        animate('0.1s', style({ transform: 'rotate(2deg)' })),
-        animate('0.1s', style({ transform: 'rotate(-2deg)' })),
-        animate('0.1s', style({ transform: 'rotate(2deg)' })),
-        animate('0.1s', style({ transform: 'rotate(0)' })),
+        style({
+          transform: 'translateY(-10%)',
+          opacity: 0,
+        }),
+        animate(
+          '.5s ease-in-out',
+          style({
+            transform: 'translateY(0)',
+            opacity: 1,
+          })
+        ),
       ]),
     ]),
   ],

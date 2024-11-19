@@ -2,7 +2,7 @@
   ><div class="movie__container">
     <div class="movie__content">
       <app-search-items
-        class="search__center"
+        class="position__center"
         [initialSearch]="lastQueryDetails()"
         (initiateSearch)="initiateSearch($event)"
         (searchChange)="searchChange($event)"></app-search-items>
@@ -10,7 +10,7 @@
         <mat-spinner class="spinner__layout"></mat-spinner>
       }
       @if (isNotEnoughOfCharacters()) {
-        <div>
+        <div class="position__center">
           {{ 'application.needThreeCharacters' | translate }}
         </div>
       }

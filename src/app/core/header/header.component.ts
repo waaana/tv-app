@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { MatToolbar, MatToolbarRow } from '@angular/material/toolbar';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
-import { AppTheme, LangOption } from '../../shared/types';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +18,7 @@ import { SharedUtil } from '../../shared/utils/shared.util';
 import { NavItem } from '../../shared/settings/model/settings.model';
 import { MatDivider } from '@angular/material/divider';
 import { LangDrowpdownOptions } from '../../shared/model/shared.model';
+import { AppTheme, LangOption } from '../../shared/types/shared.types';
 
 @Component({
   selector: 'app-header',

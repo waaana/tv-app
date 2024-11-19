@@ -56,13 +56,12 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.#store.dispatch(SettingsActions.setTabHeader('navItem.label.movies'));
-    this.#store.dispatch(
-      MoviesActions.getMovies(
-        this.#translateService.currentLang,
-        Date.now(),
-        this.lastQueryDetails()?.searchQuery ?? '',
-        true
-      )
+    this.getMovies(true);
+    this.subscription.add(
+      this.#translateService.onLangChange.subscribe(() => {
+        this.resetMovies();
+        this.getMovies(false);
+      })
     );
   }
 
@@ -85,7 +84,7 @@ export class MoviesComponent implements OnInit, OnDestroy {
 
   searchChange(searchQuery: string | null) {
     this.searchQuery.set(searchQuery ?? '');
-    this.#store.dispatch(MoviesActions.resetMoviesOnQueryChange());
+    this.resetMovies();
   }
 
   isElementScrolledAtBottom(event: any): boolean {
@@ -95,16 +94,24 @@ export class MoviesComponent implements OnInit, OnDestroy {
     );
   }
 
+  getMovies(isInitial: boolean) {
+    this.#store.dispatch(
+      MoviesActions.getMovies(
+        this.#translateService.currentLang,
+        Date.now(),
+        this.lastQueryDetails()?.searchQuery ?? '',
+        isInitial
+      )
+    );
+  }
+
+  resetMovies() {
+    this.#store.dispatch(MoviesActions.resetMoviesOnQueryChange());
+  }
+
   onScroll(event: any) {
     if (!this.isLastItem() && this.isElementScrolledAtBottom(event)) {
-      this.#store.dispatch(
-        MoviesActions.getMovies(
-          this.#translateService.currentLang,
-          Date.now(),
-          this.lastQueryDetails()?.searchQuery ?? '',
-          false
-        )
-      );
+      this.getMovies(false);
     }
   }
 

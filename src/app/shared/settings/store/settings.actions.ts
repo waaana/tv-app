@@ -1,6 +1,6 @@
 import { createAction } from '@ngrx/store';
 import { NavItem } from '../model/settings.model';
-import { AppTheme } from '../../types';
+import { AppTheme } from '../../types/shared.types';
 
 export const setSettings = createAction(
   '[Settings] Set Settings',

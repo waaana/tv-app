@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { NavItem } from '../model/settings.model';
 import { SettingsActions } from '..';
-import { AppTheme } from '../../types';
+import { AppTheme } from '../../types/shared.types';
 
 export const settingsFeatureKey = 'Settings';
 

@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { settingsFeatureKey, SettingsState } from '..';
 import { NavItem } from '../model/settings.model';
-import { AppTheme } from '../../types';
+import { AppTheme } from '../../types/shared.types';
 
 export const selectSettingsFeature =
   createFeatureSelector<SettingsState>(settingsFeatureKey);

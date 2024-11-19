@@ -1,4 +1,4 @@
-import { LangOption } from '../types';
+import { LangOption } from '../types/shared.types';
 
 export interface LangDrowpdownOptions {
   language: LangOption;

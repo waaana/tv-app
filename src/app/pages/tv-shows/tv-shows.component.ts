@@ -54,13 +54,12 @@ export class TvShowsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.#store.dispatch(SettingsActions.setTabHeader('navItem.label.tvShows'));
-    this.#store.dispatch(
-      TvShowsActions.getTvShows(
-        this.#translateService.currentLang,
-        Date.now(),
-        this.lastQueryDetails()?.searchQuery ?? '',
-        true
-      )
+    this.getTvShows(true);
+    this.subscription.add(
+      this.#translateService.onLangChange.subscribe(() => {
+        this.resetTvShows();
+        this.getTvShows(false);
+      })
     );
   }
 
@@ -83,7 +82,7 @@ export class TvShowsComponent implements OnInit, OnDestroy {
 
   searchChange(searchQuery: string | null) {
     this.searchQuery.set(searchQuery ?? '');
-    this.#store.dispatch(TvShowsActions.resetTvShowsOnQueryChange());
+    this.resetTvShows();
   }
 
   isElementScrolledAtBottom(event: any): boolean {
@@ -93,16 +92,24 @@ export class TvShowsComponent implements OnInit, OnDestroy {
     );
   }
 
+  getTvShows(isInitial: boolean) {
+    this.#store.dispatch(
+      TvShowsActions.getTvShows(
+        this.#translateService.currentLang,
+        Date.now(),
+        this.lastQueryDetails()?.searchQuery ?? '',
+        isInitial
+      )
+    );
+  }
+
+  resetTvShows() {
+    this.#store.dispatch(TvShowsActions.resetTvShowsOnQueryChange());
+  }
+
   onScroll(event: any) {
     if (!this.isLastItem() && this.isElementScrolledAtBottom(event)) {
-      this.#store.dispatch(
-        TvShowsActions.getTvShows(
-          this.#translateService.currentLang,
-          Date.now(),
-          this.lastQueryDetails()?.searchQuery ?? '',
-          false
-        )
-      );
+      this.getTvShows(false);
     }
   }
 

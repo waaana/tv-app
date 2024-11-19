@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../core/header/header.component';
-import { AppTheme } from '../../shared/types';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { debounceTime, fromEvent, Subject, takeUntil } from 'rxjs';
 import { SharedUtil } from '../../shared/utils/shared.util';
@@ -21,6 +20,7 @@ import { MatListItem, MatNavList } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { NavItem } from '../../shared/settings/model/settings.model';
+import { AppTheme } from '../../shared/types/shared.types';
 
 @Component({
   selector: 'app-main-container',

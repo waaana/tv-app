@@ -12,6 +12,7 @@
   "application.overview": "Overview",
   "application.numberOfEpisodes": "Number Of Episodes",
   "application.numberOfSeasons": "Number Of Seasons",
+  "application.pageNotFound": "Page not found, you have successfully tested this case",
   "application.popularity": "Popularity",
   "application.releaseDate": "Release Date",
   "application.revenue": "Revenue",

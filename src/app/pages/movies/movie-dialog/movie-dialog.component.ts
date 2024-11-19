@@ -3,18 +3,11 @@ import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MovieData } from '../../../shared/movies/model/movies.model';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatList, MatListItem } from '@angular/material/list';
 
 @Component({
   selector: 'app-movie-dialog',
   standalone: true,
-  imports: [
-    MatButtonModule,
-    MatDialogModule,
-    TranslateModule,
-    MatList,
-    MatListItem,
-  ],
+  imports: [MatButtonModule, MatDialogModule, TranslateModule],
   templateUrl: './movie-dialog.component.html',
   styleUrl: './movie-dialog.component.scss',
 })

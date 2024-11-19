@@ -1,5 +1,11 @@
-<mat-card @appear appearance="outlined">
+<mat-card
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+  @appear
+  [@mouseInteraction]="mouseInteraction()"
+  appearance="outlined">
   <img
+    [@mouseInteractionImg]="mouseInteraction()"
     mat-card-image
     src="{{ item().backdrop_path }}"
     alt="{{ item().label }}" />

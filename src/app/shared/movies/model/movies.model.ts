@@ -7,6 +7,7 @@ export interface MoviesGeneral {
   release_date: string;
   original_language: string;
 }
+
 export interface MovieData {
   id: string;
   title: string;

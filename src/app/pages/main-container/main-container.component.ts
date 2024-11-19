@@ -17,7 +17,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
 import { SettingsActions, settingsSelectors } from '../../shared/settings';
 import { MatListItem, MatNavList } from '@angular/material/list';
-import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { NavItem } from '../../shared/settings/model/settings.model';
 import { AppTheme } from '../../shared/types/shared.types';
@@ -30,7 +29,6 @@ import { AppTheme } from '../../shared/types/shared.types';
     HeaderComponent,
     MatSidenavModule,
     MatNavList,
-    MatIcon,
     RouterLink,
     TranslateModule,
     MatListItem,

@@ -19,7 +19,7 @@ import {
     trigger('appear', [
       transition(':enter', [
         style({
-          transform: 'translateY(-10%)',
+          transform: 'translateY(10%)',
           opacity: 0,
         }),
         animate(

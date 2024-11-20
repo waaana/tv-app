@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs';
 import { MoviesActions, moviesSelectors } from '..';
 import { concatLatestFrom } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
@@ -19,7 +19,7 @@ export class MoviesEffects {
         this.#store.select(moviesSelectors.getLastQueryDetails),
         this.#store.select(moviesSelectors.getPageInfo),
       ]),
-      exhaustMap(([payload, lastQuery, pageInfo]) => {
+      switchMap(([payload, lastQuery, pageInfo]) => {
         const page =
           lastQuery?.searchQuery !== payload.query
             ? 1
@@ -58,7 +58,7 @@ export class MoviesEffects {
   getMovie$ = createEffect(() =>
     this.#actions.pipe(
       ofType(MoviesActions.getMovie),
-      exhaustMap(payload =>
+      switchMap(payload =>
         this.#moviesService.getMovie$(payload.language, payload.id)
       ),
       map(movie => MoviesActions.getMovieSuccessResponse(movie)),

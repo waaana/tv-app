@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, exhaustMap, map } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs';
 import { TvShowsActions, tvShowsSelectors } from '..';
 import { TvShowsService } from '../services/tv-shows.service';
 import { concatLatestFrom } from '@ngrx/operators';
@@ -19,7 +19,7 @@ export class TvShowsEffects {
         this.#store.select(tvShowsSelectors.getLastQueryDetails),
         this.#store.select(tvShowsSelectors.getPageInfo),
       ]),
-      exhaustMap(([payload, lastQuery, pageInfo]) => {
+      switchMap(([payload, lastQuery, pageInfo]) => {
         const page =
           lastQuery?.searchQuery !== payload.query
             ? 1
@@ -58,7 +58,7 @@ export class TvShowsEffects {
   getTvShow$ = createEffect(() =>
     this.#actions.pipe(
       ofType(TvShowsActions.getTvShow),
-      exhaustMap(payload =>
+      switchMap(payload =>
         this.#tvShowsService.getTvShow$(payload.language, payload.id)
       ),
       map(tvShow => TvShowsActions.getTvShowSuccessResponse(tvShow)),
